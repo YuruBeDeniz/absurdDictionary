@@ -39,4 +39,14 @@
 
 .navBar {
   list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px;
+  margin: 5px;
+}
+
+.logo {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
 }
