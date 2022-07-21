@@ -8,16 +8,34 @@ export default function Login() {
     const [name, setName] = useState('');
 	const [password, setPassword] = useState('');
 	const [errorMessage, setErrorMessage] = useState(undefined);
+   
 
-    const Navigate = useNavigate();
+    const navigate = useNavigate();
+
+    const { storeToken, verifyStoredToken, user } = useContext(AuthContext)
 
     const handleSubmit = e => {
         e.preventDefault();
         const requestBody = {name, password}
-        axios.post('http://localhost:5005/api/atuh/login', requestBody)
+        axios.post('/api/auth/login', requestBody)
         .then(response => {
-           // console.log('Token alert!!!');
-
+           console.log('Token alert!!!');
+           const token = response.data.authToken;
+           // Save the token in the localStorage
+           storeToken(token);
+           console.log(user)
+           // Verify the token by sending a request 
+           // to the server's JWT validation endpoint.
+           verifyStoredToken()
+            .then(() => {
+                const id = user._id
+                navigate(`/profile/${id}`);
+            })        
+        })
+        .catch(err => {
+            console.log(err)
+            const errorDescription = err.response.data.message;
+			setErrorMessage(errorDescription);
         })
     }
 

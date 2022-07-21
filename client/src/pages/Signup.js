@@ -12,7 +12,7 @@ export default function Signup() {
   const handleSubmit = e => {
     e.preventDefault();
     const requestBody = {email, password, name}
-    axios.post('http://localhost:5005/api/auth/signup', requestBody)
+    axios.post('/api/auth/signup', requestBody)
     .then(response => {
       navigate('/login');
     })

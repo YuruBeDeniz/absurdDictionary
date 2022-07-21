@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const topicSchema = new Schema(
   {
-    name: {
+    title: {
         type: String,
         unique: true,
     },

@@ -5,29 +5,29 @@ import campingPic from '../assets/camping-logo.png';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
 
+
 export default function Navbar() {
-	const { isLoggedIn, user } = useContext(AuthContext);
+	const { isLoggedIn, logoutUser, user } = useContext(AuthContext);
+	
 
 	return (
 		<div>
 		<img src={campingPic} height='80' alt='homepic' className='logo'/>
 			<ul className='navBar'>
+				
+            	<Link to='/'><button>Home</button></Link>
+				
 				{isLoggedIn && (
 				<>	
-                <li>
-                    <Link to='/'>Home</Link>
-				</li>
+                <button><Link to={`/profile/${user._id}`}>My Profile</Link></button>
+				<button onClick={logoutUser}>Logout</button>
 				</>
 				)}
 
                 {!isLoggedIn && (
 				<>	
-				 <li>
-                	 <Link to='/signup'>Signup</Link>
-				 </li>
-				 <li>
-                    <Link to='/login'>Login</Link>
-				 </li>
+                	<Link to='/signup'><button>Signup</button></Link>
+                    <Link to='/login'><button>Login </button></Link>
 				 </> 
 				)}
 			</ul>

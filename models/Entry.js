@@ -10,6 +10,6 @@ const entrySchema = new Schema(
 
 
 
-const Entry = model("Entry", topicSchema);
+const Entry = model("Entry", entrySchema);
 
 module.exports = Entry;

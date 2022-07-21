@@ -1,4 +1,4 @@
-const jwt= require('express-jwt');
+const { expressjwt: jwt } = require('express-jwt');
 
 const getTokenFromHeaders = req => {
       // Check if the token is available on the request Headers
