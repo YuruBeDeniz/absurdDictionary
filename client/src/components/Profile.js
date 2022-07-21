@@ -18,11 +18,13 @@ export default function Profile() {
   const handleSubmit = event => {
     event.preventDefault();
     const requestBody = {title}
-    axios.post(`/api/topic/${id}`, requestBody)
+    axios.post(`/api/topic/`, requestBody)
     .then (response => {
+      //console.log(response)
       setTitle(title);
       /* setEntry(entry); */
-      navigate(`/topic/${id}`)
+      const topicID = response.data.newTopic._id
+      navigate(`/topic/${topicID}`)
     })
   }
 

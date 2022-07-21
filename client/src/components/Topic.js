@@ -14,10 +14,11 @@ export default function Topic() {
     useEffect(() => {
         axios.get(`/api/topic/${id}`)
         .then(response => {
-            setTopic(response.data)
+            console.log(response)
+            setTopic(response.data.topic)
         })
         .catch(err => console.log(err))
-    })
+    }, [])
 
   return (
     <div>
