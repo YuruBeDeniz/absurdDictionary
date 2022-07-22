@@ -1,20 +1,15 @@
-/* import React, { useState } from 'react';
-import axios from 'axios'; 
+import React, { useContext } from 'react';
+import { AuthContext } from '../context/auth';
 
-export default function Entry() {
-  const [entry, setEntry] = useState();
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    axios.post('/api/entry', requestBody)
-  }
-
+export default function Entry(props) {
+    const { user } = useContext(AuthContext);
+    console.log(props.entry)
   return (
     <div>
-    <form onSubmit = {handleSubmit}>
-        <label>Add an entry..</label>
-        <input type='text' />
-    </form>
+    <p>{props.entry.entry}</p>
+    <br />
+    <p>{user.name}</p>
     </div>
   )
-} */
+}

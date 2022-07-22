@@ -9,7 +9,6 @@ router.post('/topic/', (req, res, next) => {
         title: title
     })
     .then((newTopic) => {
-        console.log('isCreated? ', newTopic)
         res.json({newTopic: newTopic})
     })
 })
@@ -18,7 +17,7 @@ router.get('/topic/:id', (req, res, next) => {
     const topicId = req.params.id;
     console.log('topicID: ', topicId)
     Topic.findById(topicId)
-    /* .populate('entries') */
+    .populate('entries')
     .then((topicFromDB) => {
         console.log(topicFromDB)
         res.json({topic: topicFromDB})

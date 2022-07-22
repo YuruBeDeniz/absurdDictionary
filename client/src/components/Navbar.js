@@ -12,14 +12,13 @@ export default function Navbar() {
 
 	return (
 		<div>
-		<img src={campingPic} height='80' alt='homepic' className='logo'/>
 			<ul className='navBar'>
-				
+			{/* <img src={campingPic} height='80' alt='homepic' className='logo'/> */}
             	<Link to='/'><button>Home</button></Link>
 				
 				{isLoggedIn && (
 				<>	
-                <button><Link to={`/profile/${user._id}`}>My Profile</Link></button>
+                <Link to={`/profile/${user._id}`}><button>My Profile</button></Link>
 				<button onClick={logoutUser}>Logout</button>
 				</>
 				)}

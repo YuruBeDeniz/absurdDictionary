@@ -4,7 +4,8 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Profile from './components/Profile';
-import Topic from './components/Topic'
+import Topic from './pages/Topic';
+import TopicPopUp from './components/TopicPopUp';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/profile/:id' element={<Profile />} />
       <Route path='/topic/:id' element={<Topic />} />
+      <Route path='/topic/:id' element={<TopicPopUp />} />
     </Routes>
     </div>
   );
