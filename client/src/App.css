@@ -94,3 +94,21 @@
   border: 1px solid #999;
   font-size: 20px;
 }
+
+.entryBox{
+  width: 400px;
+  border: 1px solid;
+  border-radius: 4px;
+  box-shadow: 5px 10px #888888;
+  padding: 5px;
+  margin: 20px;
+}
+
+.nameAndDate {
+  text-align: right;
+}
+
+.topicTitle{
+  text-align: left;
+  margin-left: 30px;
+}

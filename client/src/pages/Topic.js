@@ -23,8 +23,8 @@ export default function Topic() {
     }, [])
 
   return (
-    <div>
-        <h2>{topic?.title}</h2>
+    <div className='topicTitle'>
+        <div ><h2>{topic?.title}</h2></div>
         {entries.map(entry => (
           <Entry key={entry._id} entry={entry} />
         ))}

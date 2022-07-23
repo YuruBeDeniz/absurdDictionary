@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { useNavigate, useParams, Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { AuthContext } from '../context/auth';
 import TopicPopUp from './TopicPopUp';
 /* import Topic from '../pages/Topic'; */
