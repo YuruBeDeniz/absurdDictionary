@@ -19,17 +19,17 @@ export default function Login() {
         const requestBody = {name, password}
         axios.post('/api/auth/login', requestBody)
         .then(response => {
-           console.log('Token alert!!!');
+           // console.log(response.data)
            const token = response.data.authToken;
+           const userId = response.data.userId
+           console.log(token)
            // Save the token in the localStorage
            storeToken(token);
-           console.log(user)
            // Verify the token by sending a request 
            // to the server's JWT validation endpoint.
            verifyStoredToken()
             .then(() => {
-                const id = user._id
-                navigate(`/profile/${id}`);
+                navigate(`/profile/${userId}`);
             })        
         })
         .catch(err => {
