@@ -7,17 +7,17 @@ import Entry from '../components/Entry';
 export default function Topic() {
     const params = useParams();
     const id = params.id;
-       
+      
     const [topic, setTopic] = useState('');
     const [entries, setEntries] = useState([]);
      
 
     useEffect(() => {
-        axios.get(`/api/topic/${id}`)
+        axios.get(`/api/topic/details/${id}`)
         .then(response => {
-           // console.log(response)
-            setTopic(response.data.topic)
-            setEntries(response.data.topic.entries)
+          // console.log(response)
+            setTopic(response?.data?.topic)
+            setEntries(response?.data?.topic?.entries)
         })
         .catch(err => console.log(err))
     }, [])
