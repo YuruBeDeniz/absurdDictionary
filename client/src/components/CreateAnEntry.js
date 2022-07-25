@@ -13,7 +13,7 @@ export default function CreateAnEntry(props) {
     const requestBody = {entry, topicId: id}
     axios.post('/api/entry', requestBody)
     .then(response => {
-      console.log(response)
+      //console.log(response)
       props.setEntriesProps([...props.entriesProps, response.data])
     })
     .catch(err => {

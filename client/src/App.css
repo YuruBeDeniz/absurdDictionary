@@ -50,6 +50,10 @@
   align-items: flex-end;
 }
 
+.searchBar {
+  margin-right: 40px;
+}
+
 .logo {
   display: flex;
   margin: 10px;

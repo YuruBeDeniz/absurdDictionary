@@ -3,7 +3,7 @@ const Entry = require('../models/Entry');
 const User = require("../models/User");
 const Topic = require('../models/Topic')
 
-router.post('/entry', (req, res, next) => {
+router.post('/', (req, res, next) => {
     const {entry, topicId} = req.body;
     Entry.create({entry})
     .then(createdEntry => {

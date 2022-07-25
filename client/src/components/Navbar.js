@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 /* import campingPic from '../assets/camping-logo.png'; */
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
+import Searchbar from './Searchbar';
 
 
 export default function Navbar() {
 	const { isLoggedIn, logoutUser, user } = useContext(AuthContext);
-	
+
 
 	return (
 		<div>
-			<div className='navBar'>
-			<input className='searchBar' type='text' placeholder='search for a topic'/>
+		<div className='navBar'>	
+			
 			{/* <img src={campingPic} height='80' alt='homepic' className='logo'/> */}
             	<Link to='/'><button>Home</button></Link>
 				

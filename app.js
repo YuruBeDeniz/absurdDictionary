@@ -25,10 +25,11 @@ const auth = require("./routes/auth")
 app.use("/api/auth", auth);
 
 const entry = require("./routes/entry")
-app.use("/api/", entry);
+app.use("/api/entry", entry);
 
 const topic = require("./routes/topic")
-app.use("/api/", topic);
+app.use("/api/topic", topic);
+
 
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
