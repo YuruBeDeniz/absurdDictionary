@@ -24,10 +24,11 @@ export default function CreateAnEntry(props) {
   const handleEntry = event => setEntry(event.target.value)
 
   return (
-    <div>
+    <div className='createEntry'>
     <form onSubmit = {handleSubmit}>
         <label>Add an entry</label>
         <input type='text' value={entry} onChange={handleEntry} />
+        <br />
         <button>Enter</button>
     </form>
     </div>

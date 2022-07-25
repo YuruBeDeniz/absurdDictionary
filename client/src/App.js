@@ -7,9 +7,9 @@ import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Profile from './components/Profile';
 import Topic from './pages/Topic';
-import TopicPopUp from './components/TopicPopUp';
+//import TopicPopUp from './components/TopicPopUp';
 import Home from './components/Home';
-
+import EditEntry from './pages/EditEntry';
 
 
 function App() {
@@ -36,6 +36,7 @@ function App() {
       <Route path='/topic/:id' element={<Topic />} />
       {/* <Route path='/topic/:id' element={<TopicPopUp />} /> */}
       <Route path='/' element={<Home topics={topics} setTopics={setTopics} />} />
+      <Route path='/entry/edit/:id' element={<EditEntry />} />
     </Routes>
     </div>
   );

@@ -2,12 +2,13 @@ const { Schema, model } = require("mongoose");
 
 const entrySchema = new Schema(
   {
-    user: { type: Schema.Types.ObjectId, ref: 'User'},
+    author: { type: Schema.Types.ObjectId, ref: 'User'},
     entry: String,
-    date: { type: Date, default: Date.now }, 
+    createdAt: { type: Date, default: Date.now }, 
   }
 )
-
+//createdAt
+//body
 
 
 const Entry = model("Entry", entrySchema);

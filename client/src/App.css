@@ -76,11 +76,18 @@
   height: auto;
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
-  background: #fff;
+ 
   border-radius: 4px;
   padding: 20px;
   border: 1px solid #999;
   overflow: auto;
+}
+
+.popup-box input {
+    height: 130px;
+    width: 350px;
+    text-align:center;
+    box-shadow: 5px 10px;
 }
  
 .close-icon {
@@ -115,4 +122,16 @@
 .topicTitle{
   text-align: left;
   margin-left: 30px;
+}
+
+.createEntry input {
+  height: 130px;
+  width: 350px;
+  text-align:start;
+}
+
+.editEntry input {
+  height: 130px;
+  width: 350px;
+  text-align:start;
 }
