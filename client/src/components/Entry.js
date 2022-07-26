@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 
 
 export default function Entry(props) {
-    const { user, isLoggedIn } = useContext(AuthContext);
-    /* console.log(props.entry)
-    console.log(user._id) */
-    console.log(user._id)
+    const { user, isLoggedIn, isLoading } = useContext(AuthContext);
+    //console.log(props.entry)
+    //console.log(user._id)
+    
 
   return (
     <div className='entryBox'>
@@ -16,8 +16,10 @@ export default function Entry(props) {
     <div className='nameAndDate'>
     <Link to={`/profile/${props.entry.author?._id}`}>{props.entry.author?.name}</Link>
     <p>{props.entry.createdAt.slice(0, 10)} {props.entry.createdAt.slice(11, 16)}</p>
+     
      <>
-      <Link to={`/entry/edit/${props.entry._id}`} >Edit</Link>
+     {!isLoading && isLoggedIn && (user._id === props.entry.author?._id) ? <Link to={`/entry/edit/${props.entry._id}`} >Edit</Link> : ''}
+      
     </> 
     </div>
     </div>

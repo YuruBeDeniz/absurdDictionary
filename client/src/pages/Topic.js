@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import CreateAnEntry from '../components/CreateAnEntry';
 import Entry from '../components/Entry';
 import { AuthContext } from '../context/auth';
@@ -16,8 +16,7 @@ export default function Topic() {
      
 
     useEffect(() => {
-      const storedToken = localStorage.getItem('authToken')
-        axios.get(`/api/topic/details/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+        axios.get(`/api/topic/details/${id}`)
         .then(response => {
            //console.log(response)
             setTopic(response?.data?.topic)
@@ -33,7 +32,8 @@ export default function Topic() {
           <Entry key={entry?._id} entry={entry} />
         ))}
         {isLoggedIn ?
-          <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} /> : '' }        
+          <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} /> : '' }  
+        <Link to={`/topic/edit/${id}`}>Edit the topic</Link>        
     </div>
   )
 }

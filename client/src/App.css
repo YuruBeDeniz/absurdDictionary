@@ -1,6 +1,8 @@
 * {
-  background-color: rgb(199, 185, 166);
+  background-color: rgb(228, 245, 244);
+  color: rgb(57, 57, 57);
 }
+/* background-color: rgb(199, 185, 166) */
 
 .App {
   text-align: center;
@@ -76,10 +78,9 @@
   height: auto;
   max-height: 70vh;
   margin-top: calc(100vh - 85vh - 20px);
- 
   border-radius: 4px;
   padding: 20px;
-  border: 1px solid #999;
+  border: 1px solid #f23b81;
   overflow: auto;
 }
 
@@ -102,7 +103,7 @@
   border-radius: 50%;
   line-height: 20px;
   text-align: center;
-  border: 1px solid #999;
+  border: 1px solid #f23b81;
   font-size: 20px;
 }
 
@@ -110,7 +111,7 @@
   width: 400px;
   border: 1px solid;
   border-radius: 4px;
-  box-shadow: 5px 10px #888888;
+  box-shadow: 5px 10px #f23b81;
   padding: 5px;
   margin: 20px;
 }
@@ -125,12 +126,22 @@
 }
 
 .createEntry input {
+  border-radius: 4px;
+  height: 130px;
+  width: 350px;
+  text-align:start;
+  box-shadow: 5px 10px #f23b81;
+}
+
+.editEntry input {
+  border-radius: 4px;
   height: 130px;
   width: 350px;
   text-align:start;
 }
 
-.editEntry input {
+.editTopic input {
+  border-radius: 4px;
   height: 130px;
   width: 350px;
   text-align:start;
