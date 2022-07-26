@@ -1,30 +1,19 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios'; 
 import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
 import Profile from './components/Profile';
 import Topic from './pages/Topic';
-//import TopicPopUp from './components/TopicPopUp';
+//import CreateATopic from './components/CreateATopic';
 import Home from './components/Home';
 import EditEntry from './pages/EditEntry';
+import EditTopic from './pages/EditTopic';
 
 
 function App() {
-
-  const [topics, setTopics] = useState([]);
-
-  useEffect(() => {
-      const storedToken = localStorage.getItem('authToken')
-      axios.get('/api/topic/gettopics', { headers: { Authorization: `Bearer ${storedToken}` } })
-      .then(response => {
-         // console.log(response)
-          setTopics(response.data.allTopics)
-      })
-      .catch(err => console.log(err))
-  }, [])
 
   return (
     <div className="App">
@@ -35,9 +24,10 @@ function App() {
       <Route path='/login' element={<Login />} />
       <Route path='/profile/:id' element={<Profile />} />
       <Route path='/topic/:id' element={<Topic />} />
-      {/* <Route path='/topic/:id' element={<TopicPopUp />} /> */}
-      <Route path='/' element={<Home topics={topics} setTopics={setTopics} />} />
+      {/* <Route path='/topic/:id' element={<CreateATopic />} /> */}
+      <Route path='/' element={<Home />} />
       <Route path='/entry/edit/:id' element={<EditEntry />} />
+      <Route path='/topic/edit/:id' element={<EditTopic />} />
     </Routes>
     </div>
   );

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { useParams, Link } from 'react-router-dom';
 import { AuthContext } from '../context/auth';
-import TopicPopUp from './TopicPopUp';
+import CreateATopic from './CreateATopic';
 /* import Topic from '../pages/Topic'; */
 
 
@@ -24,7 +24,7 @@ export default function Profile() {
     <h2>Hello {user?.name} 🙌 </h2>
     <br />
     <Link to={popupTopic} onClick={popupTopic} style={{ textDecoration: 'none' }}>Create a Topic</Link>
-						{isCreateTopic && <TopicPopUp handleClose={popupTopic}	/>}
+						{isCreateTopic && <CreateATopic handleClose={popupTopic}	/>}
     <br />
     <h3>List of entries</h3>
     {/* <h5><Topic /></h5> */}

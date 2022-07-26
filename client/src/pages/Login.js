@@ -22,7 +22,7 @@ export default function Login() {
            // console.log(response.data)
            const token = response.data.authToken;
            const userId = response.data.userId
-           console.log(token)
+           //console.log(token)
            // Save the token in the localStorage
            storeToken(token);
            // Verify the token by sending a request 

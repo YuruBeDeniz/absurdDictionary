@@ -5,15 +5,17 @@ import { AuthContext } from '../context/auth';
 
 export default function Edit() {
     const { id } = useParams();
-    const { user, isLoggedIn } = useContext(AuthContext);
+    const { user, isLoggedIn, isLoading} = useContext(AuthContext);
     const navigate = useNavigate();
 
-    const [entry, setEntry] = useState('')
+    const [entry, setEntry] = useState('');
+    
+    console.log(user)
 
     useEffect(() => {
-      const storedToken = localStorage.getItem('authToken')
-      axios.get(`/api/entry/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      axios.get(`/api/entry/${id}`)
       .then(response => {
+        console.log(response.data)
         const {entry} = response.data;
         setEntry(entry);
       })
@@ -21,17 +23,22 @@ export default function Edit() {
     }, [])
 
     const handleSubmit = event => {
+      const storedToken = localStorage.getItem('authToken')
       event.preventDefault();
       const requestBody = {entry};
-      axios.put(`/api/entry/${id}`, requestBody)
-      .then(() => {
-        navigate('/');
+      axios.put(`/api/entry/${id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .then((response) => {
+        //console.log(response.data)
+        const topicID = response.data.topic
+        navigate(`/topic/${topicID}`);
+        //navitage to topic/topicID
       })
       .catch(err => console.log(err));
     }
 
     const deleteEntry = () => {
-      axios.delete(`/api/entry/${id}`)
+      const storedToken = localStorage.getItem('authToken')
+      axios.delete(`/api/entry/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then(() => {
           navigate('/')
         })
@@ -42,6 +49,7 @@ export default function Edit() {
 
   return (
     <>
+    {/* user._id is null again */}
     {isLoggedIn ? 
       <>
     <h3>Edit the entry</h3>

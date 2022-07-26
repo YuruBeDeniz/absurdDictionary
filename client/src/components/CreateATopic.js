@@ -3,7 +3,7 @@ import '../App.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-export default function TopicPopUp(props) {
+export default function CreateATopic(props) {
   const [title, setTitle] = useState('');
 
   const navigate = useNavigate()
