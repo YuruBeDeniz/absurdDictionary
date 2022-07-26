@@ -10,8 +10,9 @@ export default function CreateAnEntry(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    const requestBody = {entry, topicId: id}
-    axios.post('/api/entry', requestBody)
+    const storedToken = localStorage.getItem('authToken');
+    const requestBody = {entry, topicId: id};
+    axios.post('/api/entry', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(response => {
       //console.log(response)
       props.setEntriesProps([...props.entriesProps, response.data])

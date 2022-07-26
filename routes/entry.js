@@ -5,10 +5,12 @@ const Topic = require('../models/Topic');
 
 //create an entry
 router.post('/', (req, res, next) => {
+    console.log('REQ.PAYLOAD:', req.payload)
+    const userName = req.payload._id;
     const {entry, topicId} = req.body;
-    Entry.create({entry})
+    Entry.create({entry, author: userName})
     .then(createdEntry => {
-        /* const {entry} = createdEntry; */
+        console.log('createdEntry: ', createdEntry)
         Topic.findByIdAndUpdate( topicId, {$push: {entries: createdEntry._id}})
         .then(updatedTopic => {
             res.json(createdEntry)

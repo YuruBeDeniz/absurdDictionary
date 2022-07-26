@@ -17,7 +17,8 @@ function App() {
   const [topics, setTopics] = useState([]);
 
   useEffect(() => {
-      axios.get('/api/topic/gettopics')
+      const storedToken = localStorage.getItem('authToken')
+      axios.get('/api/topic/gettopics', { headers: { Authorization: `Bearer ${storedToken}` } })
       .then(response => {
          // console.log(response)
           setTopics(response.data.allTopics)

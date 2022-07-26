@@ -16,9 +16,10 @@ export default function Topic() {
      
 
     useEffect(() => {
-        axios.get(`/api/topic/details/${id}`)
+      const storedToken = localStorage.getItem('authToken')
+        axios.get(`/api/topic/details/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
         .then(response => {
-           console.log(response)
+           //console.log(response)
             setTopic(response?.data?.topic)
             setEntries(response?.data?.topic?.entries)
         })
@@ -32,9 +33,7 @@ export default function Topic() {
           <Entry key={entry?._id} entry={entry} />
         ))}
         {isLoggedIn ?
-          <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} /> : '' }
-           
-        
+          <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} /> : '' }        
     </div>
   )
 }

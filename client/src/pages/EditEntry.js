@@ -11,12 +11,13 @@ export default function Edit() {
     const [entry, setEntry] = useState('')
 
     useEffect(() => {
-        axios.get(`/api/entry/${id}`)
-        .then(response => {
-          const {entry} = response.data;
-          setEntry(entry);
-        })
-        .catch(err => console.log(err));
+      const storedToken = localStorage.getItem('authToken')
+      axios.get(`/api/entry/${id}`, { headers: { Authorization: `Bearer ${storedToken}` } })
+      .then(response => {
+        const {entry} = response.data;
+        setEntry(entry);
+      })
+      .catch(err => console.log(err));
     }, [])
 
     const handleSubmit = event => {
