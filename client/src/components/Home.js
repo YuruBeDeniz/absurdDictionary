@@ -26,7 +26,7 @@ export default function Home({topics, setTopics}) {
     	<input value={search} onChange={handleSearch} type='text' placeholder='search for a topic'/>
     </div>
     {filteredSearch.map(topic => ( 
-        < div key={topic._id}>
+        < div key={topic?._id}>
         <Link to={`topic/${topic._id}`}><h4>{topic?.title}</h4></Link>
         {/* <p>{topic.entries[0]}</p> */}
         </div>

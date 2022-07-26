@@ -11,7 +11,8 @@ export default function TopicPopUp(props) {
   const handleSubmit = event => {
     event.preventDefault();
     const requestBody = {title}
-    axios.post(`/api/topic/`, requestBody)
+    const storedToken = localStorage.getItem('authToken');
+    axios.post(`/api/topic/`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then (response => {
       //console.log(response)
       setTitle(title);

@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 /* import campingPic from '../assets/camping-logo.png'; */
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
-import Searchbar from './Searchbar';
 
 
 export default function Navbar() {

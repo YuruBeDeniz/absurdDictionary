@@ -17,9 +17,14 @@ router.get('/details/:id', (req, res, next) => {
     const topicId = req.params.id;
     console.log('topicID: ', req.params)
     Topic.findById(topicId)
-    .populate('entries')
+    .populate({
+        path: 'entries',
+        populate: {
+            path: 'author'
+        }
+    })
     .then((topicFromDB) => {
-       // console.log(topicFromDB)
+        console.log(topicFromDB)
         res.json({topic: topicFromDB})
     })
     .catch(err => {
