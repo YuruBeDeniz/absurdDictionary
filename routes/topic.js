@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Topic = require('../models/Topic');
 const { isAuthenticated } = require("../middlewares/jwt");
+const User = require('../models/User');
 
 
 router.post('/', isAuthenticated, (req, res, next) => {
@@ -12,7 +13,13 @@ router.post('/', isAuthenticated, (req, res, next) => {
         author: authorId
     })
     .then((newTopic) => {
-        res.json({newTopic: newTopic})
+        User.findByIdAndUpdate( authorId, {$push: {topics: newTopic._id}})
+        .then(updatedUser => {
+            res.json({newTopic: newTopic})
+        })
+        .catch(err => {
+            console.log(err);
+        })
     })
 })
 

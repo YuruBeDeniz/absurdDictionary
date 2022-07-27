@@ -14,8 +14,9 @@ export default function CreateAnEntry(props) {
     const requestBody = {entry, topicId: id};
     axios.post('/api/entry', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(response => {
-      console.log(response.data)
+      //console.log(response.data)
       props.setEntriesProps([...props.entriesProps, response.data])
+      setEntry('')
     })
     .catch(err => {
       console.log(err)
@@ -25,9 +26,10 @@ export default function CreateAnEntry(props) {
   const handleEntry = event => setEntry(event.target.value)
 
   return (
-    <div className='createEntry'>
+    <div className='create-entry'>
     <form onSubmit = {handleSubmit}>
         <label>Add an entry</label>
+        <br/>
         <input type='text' value={entry} onChange={handleEntry} />
         <br />
         <button>Enter</button>

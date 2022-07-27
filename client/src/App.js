@@ -17,7 +17,8 @@ function App() {
 
   return (
     <div className="App">
-    <h1>Outdoor Dictionary</h1>
+    <h1>Absurd Dictionary</h1>
+    <p>Spiky source of information</p>
     <Navbar />
     <Routes>
       <Route path='/signup' element={<Signup />} />

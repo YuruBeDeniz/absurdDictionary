@@ -120,12 +120,12 @@
   text-align: right;
 }
 
-.topicTitle{
+.topic-title{
   text-align: left;
   margin-left: 30px;
 }
 
-.createEntry input {
+.create-entry input {
   border-radius: 4px;
   height: 130px;
   width: 350px;
@@ -133,16 +133,20 @@
   box-shadow: 5px 10px #f23b81;
 }
 
-.editEntry input {
+.edit-entry input {
   border-radius: 4px;
   height: 130px;
   width: 350px;
   text-align:start;
 }
 
-.editTopic input {
+.edit-topic input {
   border-radius: 4px;
   height: 130px;
   width: 350px;
   text-align:start;
+}
+
+.edit-topic-link{
+  margin-bottom: 20px;
 }

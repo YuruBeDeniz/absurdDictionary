@@ -14,12 +14,15 @@ router.post('/', isAuthenticated, (req, res, next) => {
         console.log('createdEntry: ', createdEntry)
         Topic.findByIdAndUpdate( topicId, {$push: {entries: createdEntry._id}})
         .then(updatedTopic => {
-            Entry.findById(createdEntry._id)
-            .populate('author')
-            .then((populatedEntry) => {
-                res.json(populatedEntry)
+            User.findByIdAndUpdate( userID, {$push: {entries: createdEntry._id}})
+            .then(updatedUser => {
+                Entry.findById(createdEntry._id)
+                .populate('author')
+                .then((populatedEntry) => {
+                    res.json(populatedEntry)
+                })
+                .catch(err => console.log(err))
             })
-            .catch(err => console.log(err))
         })
     })
     .catch(err => console.log(err))

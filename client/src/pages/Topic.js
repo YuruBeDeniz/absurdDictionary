@@ -26,14 +26,16 @@ export default function Topic() {
     }, [])
 
   return (
-    <div className='topicTitle'>
+    <div className='topic-title'>
         <div ><h2>{topic?.title}</h2></div>
         {entries.map(entry => (
           <Entry key={entry?._id} entry={entry} />
         ))}
         {isLoggedIn ?
           <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} /> : '' }  
-        <Link to={`/topic/edit/${id}`}>Edit the topic</Link>        
+          <br /> 
+        <Link className='edit-topic-link' to={`/topic/edit/${id}`}>Edit the topic</Link>  
+        <br />      
     </div>
   )
 }

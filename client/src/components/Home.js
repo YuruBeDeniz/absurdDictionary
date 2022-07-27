@@ -25,6 +25,7 @@ export default function Home() {
       .catch(err => console.log(err))
     }
   }, [search])
+  //when search changes useEffect runs axios.get again
 
 
 

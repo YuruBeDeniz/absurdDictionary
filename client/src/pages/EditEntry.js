@@ -53,7 +53,7 @@ export default function Edit() {
     {isLoggedIn ? 
       <>
     <h3>Edit the entry</h3>
-    <div className='editEntry'>
+    <div className='edit-entry'>
     <form onSubmit={handleSubmit}>
         <input type='text' value={entry} onChange={handleEntry} />
         <br />

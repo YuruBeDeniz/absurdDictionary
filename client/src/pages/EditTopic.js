@@ -40,7 +40,7 @@ export default function EditTopic() {
     {isLoggedIn ? 
       <>
     <h3>Edit the topic</h3>
-    <div className='editTopic'>
+    <div className='edit-topic'>
     <form onSubmit={handleSubmit}>
         <input type='text' value={title} onChange={handleTitle} />
         <br />
