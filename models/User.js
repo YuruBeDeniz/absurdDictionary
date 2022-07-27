@@ -18,6 +18,7 @@ const userSchema = new Schema(
       type: String,
       unique: true
     },
+    imageURL: String,
     entries: [{type: Schema.Types.ObjectId, ref: 'Entry'}],
     topics: [{type: Schema.Types.ObjectId, ref: 'Topic'}]
   },

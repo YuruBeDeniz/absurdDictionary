@@ -11,6 +11,7 @@ export default function Profile() {
   const id = params.id;
 
   const [userDetails, setUserDetails] = useState('');
+  const [imageURL, setImageURL] = useState('')
 
   const { user } = useContext(AuthContext);
   //console.log(user)
@@ -32,17 +33,39 @@ export default function Profile() {
   })
   }, [])
     
+  const handleFileUpload = e => {
+    const uploadData = new FormData();
+ 
+    uploadData.append("imageURL", e.target.files[0]);
+ 
+    axios.post('/api/profile/upload', uploadData)
+      .then(response => {
+       console.log(response)
+        setImageURL(response.data.secure_url);
+    
+      })
+      .catch(err => console.log("Error while uploading the file: ", err));
+  };
 
-
+  const handleSubmit = e => {
+    e.preventDefault();
+    const requestBody = {imageURL, id}
+    axios.post('/api/profile/savepicture', requestBody)
+    .then(response => {
+      console.log(response)
+    })
+    .catch(err => console.log(err));
+  }
 
   return (
     <div>
     <h2>Welcome {user?.name} 🙌 </h2>
     <br/>
-    <CgProfile size={'150px'} className='profile-icon' />
+    {imageURL ? <img src={imageURL} height='150px' /> : userDetails.imageURL ? <img src={userDetails.imageURL} height='150px' /> : <CgProfile size={'150px'} className='profile-icon' />}
     <br />
-    <form enctype='multipart/form-data'>
-    <input type='file' name='profile-image' />
+    <form onSubmit={handleSubmit} >
+    <input type="file" onChange={(e) => handleFileUpload(e)} />
+    {imageURL && <button>Save</button>}
     </form>
     <Link to={popupTopic} onClick={popupTopic}><h3>Create a Topic</h3></Link>
 						{isCreateTopic && <CreateATopic handleClose={popupTopic}	/>}
@@ -50,14 +73,11 @@ export default function Profile() {
     <h3>List of entries</h3>
     <>
       {userDetails?.entries?.map((entry, i) => (
-        <>
         <div key={entry?._id}>
         {userDetails?.entries[i-1]?.topic._id !== userDetails?.entries[i]?.topic._id && <Link to={`/topic/${entry.topic._id}`} ><h4>{entry?.topic?.title}</h4></Link>}
         {/* to show entries from one topic under only one topic and avoid showing the same topic multiple times */}
-        </div>
         <p>{entry.entry}</p> 
-        
-        </>
+        </div>
       )
         )}
     </>
