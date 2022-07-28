@@ -11,7 +11,7 @@ export default function Navbar() {
 
 	return (
 	<div>
-
+		
 	  <div className='nav-bar'>	
 	    <div className='nav-bar-heading'>
 		  <h1>Absurd Dictionary</h1>
