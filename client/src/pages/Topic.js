@@ -34,7 +34,10 @@ export default function Topic() {
         {isLoggedIn ?
           <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} /> : '' }  
           <br /> 
-        <Link className='edit-topic-link' to={`/topic/edit/${id}`}>Edit the topic</Link>  
+          <div className='edit-topic-link'>
+            <Link to={`/topic/edit/${id}`}>Edit the topic</Link>  
+          </div>
+
         <br />      
     </div>
   )
