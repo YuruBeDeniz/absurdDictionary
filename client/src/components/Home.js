@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <div>
     {/* <Searchbar topics={topics} setTopics={setTopics} /> */}
-    <div className='searchBar' >
+    <div className='search-bar' >
     	<input value={search} onChange={handleSearch} type='text' placeholder='search for a topic'/>
     </div>
     {topics.map(topic => ( 

@@ -5,7 +5,7 @@ import { AuthContext } from '../context/auth';
 
 export default function EditTopic() {
     const { id } = useParams();
-    const { user, isLoggedIn, isLoading } = useContext(AuthContext);
+    const { user, isLoggedIn } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [title, setTitle] = useState('');
