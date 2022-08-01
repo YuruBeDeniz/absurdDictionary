@@ -10,6 +10,8 @@ Lastly, I gave styling with CSS and deployed to heroku.
 
 Create topics, start discussions, write entries and enjoy freedom without quotation or reference!!! 
 
+Tech stack: JavaScript, Express, NodeJS, React, CSS
+
 Link: https://absurd-dictionary.herokuapp.com/
 
 
