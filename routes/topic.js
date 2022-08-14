@@ -26,7 +26,6 @@ router.post('/', isAuthenticated, (req, res, next) => {
 
 router.get('/details/:id', (req, res, next) => {
     const topicId = req.params.id;
-    //console.log('topicID: ', req.params)
     Topic.findById(topicId)
     .populate({
         path: 'entries',
@@ -35,7 +34,6 @@ router.get('/details/:id', (req, res, next) => {
         }
     })
     .then((topicFromDB) => {
-        //console.log('topicFromDB: ', topicFromDB)
         res.json({topic: topicFromDB})
     })
     .catch(err => {
@@ -43,15 +41,10 @@ router.get('/details/:id', (req, res, next) => {
     })
 })
 
-//get all topics to display 
 router.get('/gettopics', (req, res, next) => {
-    //console.log(req.query)
-    //we make q equal to empty string as we need it for frontend to work properly
-    //regex to make search work properly and cant be empty
     const { q = '' } = req.query;
-    Topic.find({title: {$regex : q}})
+    Topic.find({title: { $regex: new RegExp(q, "i") }})
     .then(filteredTopics => {
-        //console.log(filteredTopics)
         res.json({filteredTopics})
     })
     .catch(err => {
@@ -59,13 +52,12 @@ router.get('/gettopics', (req, res, next) => {
     })
 })
 
-//show random topics on home page
+
 router.get('/randomtopics', (req, res, next) => {
     Topic.aggregate([
         {$sample: {size: 5}}
     ])
     .then(randomTopics => {
-        //console.log(randomTopics)
         res.json({randomTopics})
     })
     .catch(err => {
@@ -73,7 +65,6 @@ router.get('/randomtopics', (req, res, next) => {
     })
 })
 
-//edit a topic
 router.put('/:id', isAuthenticated, (req, res, next) =>{
     const {title} = req.body;
     Topic.findByIdAndUpdate(req.params.id, {title}, {new: true})

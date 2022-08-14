@@ -1,5 +1,4 @@
 const router = require("express").Router();
-//express is used to create the router file
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
@@ -8,8 +7,6 @@ const { isAuthenticated } = require('../middlewares/jwt');
 
 router.post('/signup', (req, res, next) => {
     const {email, password, name} = req.body
-    //here we destructure email, password and name from the body of the 
-    //incoming request req.body
     if (email === '' || password === '' || name === '') {
 		res.status(400).json({ message: 'Provide email, password and name' })
 		return
@@ -30,10 +27,7 @@ router.post('/signup', (req, res, next) => {
 
             return User.create({email, password: hashedPassword, name})
                        .then(createdUser => {
-                        // Deconstruct the newly created user object to omit the password
                         const {email, name, _id} = createdUser;
-
-                        // Create a new object that doesn't expose the password
                         const user = { email, name, _id};
                         res.status(201).json({user: user})
                        })
@@ -53,7 +47,6 @@ router.post('/login', (req, res, next) => {
      
     User.findOne({name})
         .then((foundUser) => {
-            //console.log(foundUser)
             if (!foundUser) {
                 res.status(401).json({ message: "User not found." })
                 return;
@@ -62,17 +55,14 @@ router.post('/login', (req, res, next) => {
             if(passwordCorrect){
                 const {name, _id} = foundUser;
 
-                // Create an object that will be set as the token payload
                 const payload = {_id, name};
             
-                //Create and sign the token
                 const authToken = jwt.sign(
                    payload,
                    process.env.JWT_SECRET,
                    {algorithm: 'HS256', expiresIn: '24h'}
             )
 
-               //Send the token as the response
                res.status(200).json({authToken: authToken, userId: _id});
             }       
             else {
@@ -86,7 +76,6 @@ router.post('/login', (req, res, next) => {
 })
 
 router.get('/verify', isAuthenticated, (req, res, next) => {
-    //console.log('req.payload: ', req.payload);
     res.status(200).json(req.payload);
 })
 

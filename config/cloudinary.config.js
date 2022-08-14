@@ -9,14 +9,12 @@ cloudinary.config({
 });
 
 const storage = new CloudinaryStorage({
-  // cloudinary: cloudinary,
   cloudinary,
   params: {
     allowed_formats: ['jpg', 'png'],
-    folder: 'absurd-dictionary' // The name of the folder in cloudinary
-    // resource_type: 'raw' => this is in case you want to upload other type of files, not just images
+    folder: 'absurd-dictionary' 
   }
 });
 
-//                     storage: storage
+
 module.exports = multer({ storage });

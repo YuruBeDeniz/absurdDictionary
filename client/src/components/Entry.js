@@ -7,8 +7,7 @@ import SmallImage from './SmallImage';
 
 export default function Entry(props) {
     const { user, isLoggedIn, isLoading } = useContext(AuthContext);
-    //console.log(props.entry)
-    //console.log(user)
+
     
     const date = new Date(props.entry.createdAt).toLocaleString()
 

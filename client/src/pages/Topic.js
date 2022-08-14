@@ -18,7 +18,6 @@ export default function Topic() {
     useEffect(() => {
         axios.get(`/api/topic/details/${id}`)
         .then(response => {
-           //console.log(response)
             setTopic(response?.data?.topic)
             setEntries(response?.data?.topic?.entries)
         })
@@ -31,12 +30,15 @@ export default function Topic() {
         {entries.map(entry => (
           <Entry key={entry?._id} entry={entry} />
         ))}
-        {isLoggedIn ?
-          <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} /> : '' }  
+        {isLoggedIn ? (
+          <>
+          <CreateAnEntry setEntriesProps={setEntries} entriesProps={entries} />
           <br /> 
           <div className='edit-topic-link'>
             <Link to={`/topic/edit/${id}`}>Edit the topic</Link>  
           </div>
+          </>
+        ) : null }  
 
         <br />      
     </div>

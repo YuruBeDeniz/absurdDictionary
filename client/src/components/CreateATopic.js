@@ -14,9 +14,7 @@ export default function CreateATopic(props) {
     const storedToken = localStorage.getItem('authToken');
     axios.post(`/api/topic/`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then (response => {
-      //console.log(response)
       setTitle(title);
-      /* setEntry(entry); */
       const topicID = response.data.newTopic._id
       navigate(`/topic/${topicID}`)
     })
