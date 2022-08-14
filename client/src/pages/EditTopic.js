@@ -10,12 +10,10 @@ export default function EditTopic() {
 
     const [title, setTitle] = useState('');
 
-    console.log(user._id)
 
     useEffect(() => {
         axios.get(`/api/topic/details/${id}`)
         .then((response) => {
-            console.log(response.data.topic)
             const {title} = response.data.topic;
             setTitle(title);
         })
@@ -34,6 +32,9 @@ export default function EditTopic() {
       }
 
     const handleTitle = event => setTitle(event.target.value)
+
+    const isOwnProfile = isLoggedIn && (user._id)
+
 
   return (
     <>

@@ -14,7 +14,6 @@ export default function CreateAnEntry(props) {
     const requestBody = {entry, topicId: id};
     axios.post('/api/entry', requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
     .then(response => {
-      //console.log(response.data)
       props.setEntriesProps([...props.entriesProps, response.data])
       setEntry('')
     })

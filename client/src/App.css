@@ -1,8 +1,9 @@
 body {
-  background-color: #f9f5e9;
+  background-color: white;
   color: rgb(57, 57, 57);
 }
 /* background-color: rgb(199, 185, 166) */
+
 
 .App {
   text-align: center;
@@ -53,8 +54,6 @@ body {
   flex-direction: column;
   width: 100%;
   top: 0;
-/*   position: fixed;
-  z-index: 1; */
 }
 
 .nav-bar-buttons {
@@ -71,7 +70,7 @@ body {
 .nav-bar button {
   border-radius: 4px;
   margin: 1px;
-  background-color: #e8e4da;
+  background-color: rgb(214, 213, 213);
   border: 1px solid;
 }
 
@@ -80,7 +79,7 @@ body {
 }
 
 .search-bar input {
-  background-color: #e8e4da;
+  background-color: rgb(214, 213, 213);
   border-radius: 4px;
   width: 200px;
   border: 1px solid;
@@ -119,7 +118,7 @@ body {
     width: 350px;
     text-align:center;
     box-shadow: 5px 10px;
-    background-color: #e8e4da;
+    background-color: rgb(214, 213, 213);
 }
  
 .close-icon {
@@ -128,7 +127,7 @@ body {
   position: fixed;
   right: calc(15% - 30px);
   top: calc(100vh - 85vh - 33px);
-  background: #e8e4da;
+  background: rgb(214, 213, 213);
   width: 25px;
   height: 25px;
   border-radius: 50%;
@@ -140,13 +139,14 @@ body {
 
 .entry-box{
   width: 400px;
-  background-color: #e8e4da;
+  background-color: rgb(214, 213, 213);
   border: 1px solid;
   border-radius: 4px;
   box-shadow: 5px 10px #e89250;
   padding: 5px;
   margin: 20px;
 }
+/* e8e4da */
 
 .nameAndDate {
   text-align: right;
@@ -159,7 +159,7 @@ body {
 
 
 .create-entry input {
-  background-color:#e8e4da;
+  background-color:rgb(214, 213, 213);
   border-radius: 4px;
   height: 130px;
   width: 350px;
@@ -173,7 +173,7 @@ body {
   height: 130px;
   width: 350px;
   text-align:start;
-  background-color: #e8e4da;
+  background-color: rgb(214, 213, 213);
   border: 1px solid;
 }
 
@@ -182,7 +182,7 @@ body {
   height: 130px;
   width: 350px;
   text-align:start;
-  background-color: #e8e4da;
+  background-color: rgb(214, 213, 213);
   border: 1px solid;
 }
 

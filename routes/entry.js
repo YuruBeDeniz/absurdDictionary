@@ -4,7 +4,7 @@ const User = require("../models/User");
 const Topic = require('../models/Topic');
 const { isAuthenticated } = require("../middlewares/jwt");
 
-//create an entry
+
 router.post('/', isAuthenticated, (req, res, next) => {
     console.log('REQ.PAYLOAD:', req.payload)
     const userID = req.payload._id;
@@ -28,10 +28,9 @@ router.post('/', isAuthenticated, (req, res, next) => {
     .catch(err => console.log(err))
 })
 
-//get a specific entry
+
 router.get('/:id', (req, res, next) => {
     const entryId = req.params.id
-   // console.log('entry ID: ', req.params)
     Entry.findById(entryId)
     .populate('topic')
     .then(entry => {
@@ -40,7 +39,7 @@ router.get('/:id', (req, res, next) => {
     .catch(err => console.log(err));
 })
 
-//edit an entry
+
 router.put('/:id', isAuthenticated, (req, res, next) =>{
     const {entry} = req.body;
     Entry.findByIdAndUpdate(req.params.id, {entry}, {new: true})
@@ -51,7 +50,6 @@ router.put('/:id', isAuthenticated, (req, res, next) =>{
 })
 
 
-//delete an entry
 router.delete('/:id', isAuthenticated, (req, res, next) => {
     const entryId = req.params.id
     Entry.findByIdAndDelete(entryId)

@@ -26,18 +26,13 @@ export default function Profile() {
   useEffect(() => {
     axios.get(`/api/profile/details/${id}`)
     .then((response) => {
-      //console.log(response.data)
       setUserDetails(response.data.user)
     })
     .catch(err => {
       console.log(err);
   })
   }, [id])
-  //if the params id changes, the data is reloaded
 
-
-  //console.log('user: ', user)
-  //console.log('userDetails:', userDetails)
     
   const isOwnProfile = isLoggedIn && (user._id === userDetails._id)
 

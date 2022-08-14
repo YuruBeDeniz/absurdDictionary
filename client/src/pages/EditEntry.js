@@ -9,13 +9,11 @@ export default function Edit() {
     const navigate = useNavigate();
 
     const [entry, setEntry] = useState('');
-    
-    console.log(user)
+
 
     useEffect(() => {
       axios.get(`/api/entry/${id}`)
       .then(response => {
-        console.log(response.data)
         const {entry} = response.data;
         setEntry(entry);
       })
@@ -28,10 +26,8 @@ export default function Edit() {
       const requestBody = {entry};
       axios.put(`/api/entry/${id}`, requestBody, { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => {
-        //console.log(response.data)
         const topicID = response.data.topic
         navigate(`/topic/${topicID}`);
-        //navitage to topic/topicID
       })
       .catch(err => console.log(err));
     }
@@ -49,7 +45,6 @@ export default function Edit() {
 
   return (
     <>
-    {/* user._id is null again */}
     {isLoggedIn ? 
       <>
     <h3>Edit the entry</h3>
@@ -61,8 +56,7 @@ export default function Edit() {
     </form>
     <button onClick={deleteEntry}>Delete this entry ❌</button>
     </div>
-    </> : ''
-    }
+    </> : ''}
     </>
   )
 }
